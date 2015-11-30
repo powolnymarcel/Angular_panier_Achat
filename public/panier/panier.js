@@ -10,31 +10,49 @@ angular.module('panier', ['ngRoute'])
 	}])
 
 	.controller('PanierCtrl', ['$scope',function($scope) {
-		$scope.shopData = [
-			{'item':'Hard Disk','id':'HD','selected':0,'prices':[{'size':'200GB','price':'2000'},{'size':'400GB','price':'4000'}]},
-			{'item':'CPU','id':'CPU','selected':0,'prices':[{'size':'i3','price':'20000'},{'size':'i5','price':'25000'}]},
-			{'item':'Monitor','id':'MON','selected':0,'prices':[{'size':'16\'','price':'3000'},{'size':'19\'','price':'5000'}]},
-			{'item':'Optical Mouse','id':'MOU','selected':0,'prices':[{'size':'Optical','price':'350'},{'size':'Advanced','price':'550'}]},
-			{'item':'RAM','id':'RM','selected':0,'prices':[{'size':'4GB','price':'4000'},{'size':'8GB','price':'8000'}]},
-			{'item':'USB Keyboard','id':'KEY','selected':0,'prices':[{'size':'Standard','price':'2500'},{'size':'Advanced','price':'4500'}]}
+		$scope.produitsDumagasin = [
+			{'produit':'Disque dur ','id':'HDD','selected':0,'prix':[{'taille':'6Tb','prix':'300'},{'taille':'8Tb','prix':'400'}]},
+			{'produit':'CPU','id':'CPU','selected':0,'prix':[{'taille':'i3','prix':'189'},{'taille':'i5','prix':'250'}]},
+			{'produit':'Moniteur','id':'MON','selected':0,'prix':[{'taille':'16\'','prix':'120'},{'taille':'19\'','prix':'169'}]},
+			{'produit':'Souris','id':'SOUR','selected':0,'prix':[{'taille':'Optique','prix':'35'},{'taille':'Avancé','prix':'55'}]},
+			{'produit':'RAM','id':'RAM','selected':0,'prix':[{'taille':'6GB','prix':'40'},{'taille':'8GB','prix':'80'}]},
+			{'produit':'Claviers','id':'CLA','selected':0,'prix':[{'taille':'Standard','prix':'49'},{'taille':'Avancé','prix':'89'}]}
 		];
 
 
 
+		$scope.total = function() {
+			var leTotal = 0;
 
+			for (var i in $scope.produitsDumagasin) {
+				leTotal += parseInt($scope.produitsDumagasin[i].selected);
+			}
+
+			return leTotal;
+
+		}
 
 
 	}])
-	.directive('checkList', function() {
+	.directive('checkListe', function() {
 		return {
+			//'E' donc sera sous la forme <check-liste></check-liste>
 			restrict: 'E',
 			scope: {
-			option: '='
+			option: '=',
+				<!-- ATTENTION: Dans la vue le camelCase se transforme en tirets (-) -->
+				leNomUniquePourLeNameDuSelect: '=',
+				selectionne:'='
 		},
+			//option est le parametre dans la balise checkList de la vue panier.html
+			//option="produit.prix"
+			//En remplacement de ma balise "<check-list>" on utilisera ce template
+			// Ce template contient un boucle qui itère sur tous les prix de l'objet produit voir scope produitsDumagasin
+			//Simple non ? Pareil pour 'leNomUniquePourLeNameDuSelect'
 			template: function(elem, attrs) {
 				return '<div class="panel-body">\
                     <div class="radio" ng-repeat="i in option">\
-                        <label><input type="radio">{{i.size}} Rs.{{i.price}}</label>\
+                        <label><input ng-model="$parent.selectionne" ng-value="{{i.prix}}" type="radio" name="{{leNomUniquePourLeNameDuSelect}}">{{i.taille}} Au prix de: <b>{{i.prix}} Euros</b></label>\
                     </div>\
                 </div>'
 			}

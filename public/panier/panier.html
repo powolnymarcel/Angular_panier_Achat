@@ -69,11 +69,12 @@
 		</div>
 		<div class="col-xs-7 col-md-8 col-sm-8 col-lg-8">
 
-			<div class="panel panel-primary" ng-repeat="q in shopData">
+			<div class="panel panel-primary" ng-repeat="produit in produitsDumagasin">
 				<div class="panel-heading">
-					<h3 class="panel-title">{{q.item}}</h3>
+					<h3 class="panel-title">{{produit.produit}}</h3>
 				</div>
-				<check-list option="q.prices"></check-list>
+				<!-- ATTENTION: le camelCase se transforme en tirets (-) -->
+				<check-liste selectionne="produit.selected" le-nom-unique-pour-le-name-du-select="produit.id" option="produit.prix"></check-liste>
 			</div>
 		</div>
 
@@ -83,7 +84,7 @@
 					<h3 class="panel-title">Total</h3>
 				</div>
 				<div class="panel-body" >
-					<h2>Euros. 100</h2>
+					<h2>Euros {{total()}}</h2>
 				</div>
 			</div>
 
