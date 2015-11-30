@@ -4,8 +4,11 @@
 
 ## Infos ##
 
-
-
+<ul>
+	<li>Découverte de affix pour bootstrap</li>
+	<li>Travail sur les services interessant</li>
+	<li>Travail sur le watcher interessant as well</li>
+</ul>
 ## Infos ##
 *Utilisation de MarkdownPad 2 pour creer des "*.md"
 
