@@ -5,8 +5,8 @@ angular.module('panierAchat', [
 	'ngRoute',
 	'panier',
 	'payer'
-]).
-config(['$routeProvider', function($routeProvider) {
+])
+	.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.otherwise({
 		redirectTo: '/panier'
 	});

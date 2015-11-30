@@ -68,7 +68,6 @@
 			</div>
 		</div>
 		<div class="col-xs-7 col-md-8 col-sm-8 col-lg-8">
-
 			<div class="panel panel-primary" ng-repeat="produit in produitsDumagasin">
 				<div class="panel-heading">
 					<h3 class="panel-title">{{produit.produit}}</h3>
@@ -78,7 +77,7 @@
 			</div>
 		</div>
 
-		<div class="col-xs-5 col-md-4 col-sm-4 col-lg-4" id="myAffix" data-spy="affix" >
+		<div class="col-xs-5 col-md-4 col-sm-4 col-lg-4" id="myAffix" data-spy="affix" ng-class="{'affix': scroll > 50, 'affix-top': scroll <= 50}">
 			<div class="panel panel-primary" >
 				<div id="divTotal" class="panel-heading" >
 					<h3 class="panel-title">Total</h3>
@@ -89,7 +88,7 @@
 			</div>
 
 			<div class="text-center">
-				<a href="#/checkout" class="btn btn-danger">Payer <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+				<a href="#/payer" class="btn btn-danger">Payer <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 				</a>
 			</div>
 		</div>
@@ -228,3 +227,4 @@
 		}
 	})
 </script>
+<get-scroll scroll="scroll"></get-scroll>

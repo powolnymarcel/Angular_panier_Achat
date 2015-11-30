@@ -1,24 +1,16 @@
 <div class="container">
 	<div class="well">
 		<div class="page-header">
-			<h3>Quotation</h3>
+			<h3>Recapitulatif</h3>
 		</div>
 
 		<table class="table">
-			<tr>
+			<tr ng-repeat="i in produits">
 				<td>
-					CPU
+					{{i.produit}}
 				</td>
 				<td>
-					Rs. 20000
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Hard Disk
-				</td>
-				<td>
-					Rs. 5000
+					Euros {{i.selected}}
 				</td>
 			</tr>
 			<tr>
@@ -26,7 +18,7 @@
 					<b>Total:</b>
 				</td>
 				<td>
-					<b>Rs. 25000</b>
+					<b>Euros: {{total}}</b>
 				</td>
 			</tr>
 		</table>
@@ -34,7 +26,7 @@
 
 	</div>
 	<div class="text-left">
-		<a type="button" class="btn btn-danger" href="#/cart">Customize <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+		<a type="button" class="btn btn-danger" href="#/panier">Modifier <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
 
 	</div>
 </div>

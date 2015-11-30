@@ -9,6 +9,9 @@ angular.module('payer', ['ngRoute'])
 		});
 	}])
 
-	.controller('PayerCtrl', ['$scope', function($scope) {
+	.controller('PayerCtrl', ['$scope','AjoutPanierFinalService', function($scope,AjoutPanierFinalService) {
+		$scope.produits = AjoutPanierFinalService.getProduits();
+		$scope.total = AjoutPanierFinalService.getTotal();
+
 
 	}]);
